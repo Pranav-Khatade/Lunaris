@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci468w6t37dcc"]
+
+[ext_resource type="Script" uid="uid://b6raj38c1wsom" path="res://Script/alien_invasion.gd" id="1_2vb53"]
+[ext_resource type="Texture2D" uid="uid://ckoq2b0hr1gwh" path="res://sprite-sheet/alien.png" id="2_d82ue"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7xou"]
+atlas = ExtResource("2_d82ue")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1s72"]
+atlas = ExtResource("2_d82ue")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miyhx"]
+atlas = ExtResource("2_d82ue")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekgg1"]
+atlas = ExtResource("2_d82ue")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6gby"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7xou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1s72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miyhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekgg1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Alien_invasion" type="Node2D"]
+script = ExtResource("1_2vb53")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j6gby")
+frame = 2
+frame_progress = 0.920765
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(-12, -18, -12, -8, -12, 2, -25, 21, 28, 21, 12, 1, 12, -8, 12, -18)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]

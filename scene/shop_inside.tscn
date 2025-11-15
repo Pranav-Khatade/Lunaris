@@ -1,0 +1,322 @@
+[gd_scene load_steps=18 format=4 uid="uid://bwwqip13hunjb"]
+
+[ext_resource type="TileSet" uid="uid://2ck6d1rwcgwk" path="res://scene/tileset.tres" id="1_tot8w"]
+[ext_resource type="FontFile" uid="uid://gc3h73pdsghw" path="res://font/SignikaNegative-Medium.ttf" id="2_5f6o3"]
+[ext_resource type="PackedScene" uid="uid://du5cttpdw584v" path="res://scene/player.tscn" id="2_akjh6"]
+[ext_resource type="AudioStream" uid="uid://ddrlwl1m4c1op" path="res://sprite-sheet/hitting.wav" id="3_368ks"]
+[ext_resource type="PackedScene" uid="uid://dn8vxprjf7gl6" path="res://scene/shop.tscn" id="3_karom"]
+[ext_resource type="PackedScene" uid="uid://8jawraxfihdi" path="res://scene/shopkepper.tscn" id="5_34syf"]
+[ext_resource type="AudioStream" uid="uid://dv748vq2v8b15" path="res://sprite-sheet/nostalgia.mp3" id="7_rbh4j"]
+
+[sub_resource type="Theme" id="Theme_368ks"]
+
+[sub_resource type="Theme" id="Theme_karom"]
+default_font = ExtResource("2_5f6o3")
+default_font_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34syf"]
+bg_color = Color(0.0823529, 0.0784314, 0.109804, 0.784314)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_rbh4j"]
+default_font = ExtResource("2_5f6o3")
+default_font_size = 10
+
+[sub_resource type="Theme" id="Theme_rknfg"]
+default_font = ExtResource("2_5f6o3")
+
+[sub_resource type="Theme" id="Theme_or6fr"]
+default_font = ExtResource("2_5f6o3")
+default_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hk66n"]
+resource_local_to_scene = true
+bg_color = Color(0.0602921, 0.0872342, 0.131364, 0.733333)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing_size = 0.519
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e71lj"]
+bg_color = Color(0.0823529, 0.0784314, 0.109804, 0.894118)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbh4j"]
+resource_local_to_scene = true
+bg_color = Color(0.0602921, 0.0872342, 0.131364, 0.733333)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing_size = 0.519
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rknfg"]
+resource_local_to_scene = true
+bg_color = Color(0.0602921, 0.0872342, 0.131364, 0.733333)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing_size = 0.519
+
+[node name="shop_inside" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2167.5
+offset_top = -1435.0
+offset_right = 2167.5
+offset_bottom = 1435.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="player" parent="." instance=ExtResource("2_akjh6")]
+z_index = 4
+position = Vector2(261, 77)
+
+[node name="Panel2" type="Panel" parent="player"]
+z_index = 1
+offset_left = -92.0
+offset_top = -37.0
+offset_right = 93.0
+offset_bottom = 56.0
+scale = Vector2(1.16904, 0.916658)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="player/Panel2"]
+layout_mode = 0
+offset_left = 12.831
+offset_top = 8.72736
+offset_right = 179.831
+offset_bottom = 64.7274
+theme_override_constants/separation = 10
+
+[node name="speed" type="HBoxContainer" parent="player/Panel2/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_368ks")
+theme_override_constants/separation = 51
+
+[node name="speed_label" type="Label" parent="player/Panel2/VBoxContainer/speed"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5f6o3")
+theme_override_font_sizes/font_size = 18
+text = "Speed : 10"
+
+[node name="Speed" type="Button" parent="player/Panel2/VBoxContainer/speed"]
+texture_filter = 2
+layout_mode = 2
+theme = SubResource("Theme_karom")
+theme_override_styles/normal = SubResource("StyleBoxFlat_34syf")
+text = "INCR"
+
+[node name="cooldown" type="HBoxContainer" parent="player/Panel2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="cool_label" type="Label" parent="player/Panel2/VBoxContainer/cooldown"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5f6o3")
+theme_override_font_sizes/font_size = 18
+text = "Cooldown : 120"
+
+[node name="cool" type="Button" parent="player/Panel2/VBoxContainer/cooldown"]
+texture_filter = 2
+layout_mode = 2
+theme = SubResource("Theme_karom")
+theme_override_styles/normal = SubResource("StyleBoxFlat_34syf")
+text = "DEC"
+
+[node name="Button" type="Button" parent="player/Panel2"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 37.6376
+offset_top = 69.8189
+offset_right = 66.6376
+offset_bottom = 90.8189
+scale = Vector2(0.760487, 0.73818)
+theme = SubResource("Theme_rbh4j")
+text = "back"
+
+[node name="cash" type="Label" parent="player/Panel2"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 98.371
+offset_top = 70.9098
+offset_right = 138.371
+offset_bottom = 91.9098
+scale = Vector2(0.731477, 0.780316)
+theme = SubResource("Theme_rknfg")
+text = "CASH :"
+
+[node name="new" type="Label" parent="player/Panel2"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 30.7944
+offset_top = -20.7275
+offset_right = 147.794
+offset_bottom = 0.27252
+theme = SubResource("Theme_or6fr")
+text = "Not enough Cash"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="player"]
+texture_filter = 2
+offset_left = -139.0
+offset_top = -75.0
+offset_right = 9.0
+offset_bottom = -60.0
+theme_override_colors/table_border = Color(1, 1, 1, 1)
+theme_override_colors/table_even_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/table_odd_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.912289, 0.912289, 0.912289, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
+theme_override_colors/font_shadow_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+theme_override_fonts/normal_font = ExtResource("2_5f6o3")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_hk66n")
+text = " ORE :"
+fit_content = true
+
+[node name="Redeem" type="Button" parent="player"]
+texture_filter = 2
+offset_left = 95.0
+offset_top = -77.0
+offset_right = 139.0
+offset_bottom = -59.0
+theme_override_fonts/font = ExtResource("2_5f6o3")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_e71lj")
+text = "Redeem"
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(4, 4)
+
+[node name="hitting" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("3_368ks")
+max_distance = 72.0
+bus = &"SFX"
+
+[node name="purchase" type="Button" parent="player"]
+offset_left = 28.0
+offset_top = -73.0
+offset_right = 99.0
+offset_bottom = -44.0
+scale = Vector2(0.437084, 0.4)
+theme_override_colors/font_color = Color(0.185177, 0.792292, 1, 1)
+text = "Purchase"
+
+[node name="Odds" type="RichTextLabel" parent="player"]
+z_index = 10
+texture_filter = 2
+offset_left = -71.0
+offset_top = -43.0
+offset_right = 97.0
+offset_bottom = -16.0
+scale = Vector2(0.919999, 1)
+theme_override_colors/table_border = Color(1, 1, 1, 1)
+theme_override_colors/table_even_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/table_odd_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.912289, 0.912289, 0.912289, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
+theme_override_colors/font_shadow_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+theme_override_fonts/normal_font = ExtResource("2_5f6o3")
+theme_override_font_sizes/normal_font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_rbh4j")
+text = "OOD's ARE AGAINST YOU"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="player"]
+z_index = 10
+texture_filter = 2
+offset_left = -137.0
+offset_top = -59.0
+offset_right = -94.0
+offset_bottom = -44.0
+scale = Vector2(0.719999, 1)
+theme_override_colors/table_border = Color(1, 1, 1, 1)
+theme_override_colors/table_even_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/table_odd_row_bg = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0.912289, 0.912289, 0.912289, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
+theme_override_colors/font_shadow_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+theme_override_fonts/normal_font = ExtResource("2_5f6o3")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_rknfg")
+text = " Life : 3"
+fit_content = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_tot8w")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196594, 262147, 3, -196595, 262147, 3, -196596, 262147, 3, -131060, 262147, 3, -65524, 262147, 3, -65525, 262147, 3, -131061, 262147, 3, -196597, 262147, 3, -262133, 262147, 3, -327669, 262147, 3, -393205, 262147, 3, -327668, 262147, 3, -262132, 262147, 3, -393204, 262147, 3, -393206, 262147, 3, -327670, 262147, 3, -262134, 262147, 3, -196598, 262147, 3, -131062, 262147, 3, -65526, 262147, 3, -65527, 262147, 3, -131063, 262147, 3, -196599, 262147, 3, -262135, 262147, 3, -327671, 262147, 3, -393207, 262147, 3, -393208, 262147, 3, -327672, 458755, 0, -262137, 262147, 3, -196601, 262147, 3, -131065, 262147, 3, -131064, 458755, 0, -65528, 458755, 0, -65529, 262147, 3, -196600, 458755, 0, -262136, 458755, 0, -327673, 262147, 3, -393209, 262147, 3, 12, 262147, 3, 11, 262147, 3, 10, 262147, 3, 9, 262147, 3, 8, 262147, 3, 7, 262147, 3, -458745, 262147, 3, -524281, 262147, 3, -524280, 262147, 3, -458744, 262147, 3, -458743, 262147, 3, -458742, 262147, 3, -458741, 262147, 3, -458740, 262147, 3, -524276, 262147, 3, -524277, 262147, 3, -524278, 262147, 3, -524279, 262147, 3, 65543, 262147, 3, 65544, 262147, 3, 65545, 262147, 3, 65546, 262147, 3, 65547, 262147, 3, 65548, 262147, 3, 65542, 262147, 2, 6, 262147, 2, -65530, 262147, 2, -131066, 262147, 2, -196602, 262147, 2, -262138, 262147, 2, -327674, 262147, 2, -393210, 262147, 2, -458746, 458755, 0, -524282, 458755, 0, -589818, 131075, 2, -589817, 131075, 2, -589816, 131075, 2, -589815, 131075, 2, -589814, 131075, 2, -589813, 131075, 2, -589812, 131075, 2, -655354, 65539, 2, -655353, 65539, 2, -655352, 65539, 2, -655351, 65539, 2, -655350, 65539, 2, -589820, 327683, 2, -524284, 327683, 2, -524283, 327683, 2, -458747, 327683, 2, -393211, 327683, 2, -327675, 327683, 2, -327676, 327683, 2, -458748, 327683, 2, -393212, 327683, 2, -655356, 327683, 2, -262140, 327683, 2, -196604, 327683, 2, -131068, 327683, 2, -65532, 327683, 2, -589819, 327683, 2, -655355, 65539, 2, -131059, 458755, 0, -131058, 458755, 0, -131057, 458755, 0, -196593, 458755, 0, -262129, 458755, 0, -262130, 458755, 0, -262131, 458755, 0, -327667, 458755, 0, -393203, 458755, 0, -458739, 458755, 0, -524275, 458755, 0, -589811, 458755, 0, 5, 458755, 0, 131080, 458755, 0, 131081, 458755, 0, 131082, 458755, 0, 131083, 458755, 0, 131084, 458755, 0, 131085, 458755, 0, 65549, 458755, 0, 13, 458755, 0, -65523, 458755, 0, 131087, 458755, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAAGAPn/AwACAAIAAAAHAPn/AwACAAIAAAAHAP7/AwADAAIAAAAHAP3/AwADAAIAAAAHAPz/AwADAAIAAAAHAPv/AwADAAIAAAAHAPr/AwADAAIAAAAHAP//AwAHAAIAAAAGAP//AwACAAIAAAAMAPf/AwAHAAAAAAALAPf/AwAHAAAAAAAHAPf/AwAHAAAAAAAIAPf/AwAHAAAAAAAJAPf/AwAHAAAAAAAKAPf/AwAHAAAAAAAGAPf/AwAHAAAAAAAFAPf/AwAHAAAAAAAFAPj/AwAHAAAAAAA=")
+tile_set = ExtResource("1_tot8w")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAAFAP//AwAEAAIAAAAFAP7/AwAEAAIAAAAFAP3/AwAEAAIAAAAFAPz/AwAEAAIAAAAFAPv/AwAEAAIAAAAFAPr/AwAEAAIAAAAFAPn/AwAEAAIAAAAFAPj/AwAHAAAAAAAFAPf/AwAEAAIAAAAFAAAAAwAEAAIAAAAFAPb/AwACAAIAAAAGAPb/AwACAAIAAAAHAPb/AwACAAIAAAAIAPb/AwACAAIAAAAJAPb/AwACAAIAAAAKAPb/AwACAAIAAAALAPb/AwACAAIAAAAHAP3/AwAHAAAAAAAHAPz/AwAHAAAAAAAHAPv/AwAHAAAAAAAHAPr/AwAHAAAAAAAHAP//AwAHAAAAAAAGAP//AwAHAAAAAAAHAAIAAwAHAAAAAAAGAAAAAwAHAAAAAAAGAAEAAwAHAAAAAAAHAP7/AwAHAAAAAAAHAPn/AwAHAAAAAAAIAPr/AwAHAAAAAAAIAPv/AwAHAAAAAAAGAPj/AwAHAAAAAAA=")
+tile_set = ExtResource("1_tot8w")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="TileMap"]
+z_index = 3
+tile_map_data = PackedByteArray("AAAEAP//AwAEAAIAAAAEAP7/AwAEAAIAAAAEAP3/AwAEAAIAAAAEAPz/AwAEAAIAAAAEAPv/AwAEAAIAAAAEAPr/AwAEAAIAAAAEAPn/AwAEAAIAAAAEAPj/AwAEAAIAAAAEAPf/AwAEAAIAAAAEAPb/AwAEAAIAAAAEAPX/AwACAAIAAAAFAPX/AwACAAIAAAAGAPX/AwACAAIAAAAHAPX/AwACAAIAAAAIAPX/AwACAAIAAAAJAPX/AwACAAIAAAAKAPX/AwACAAIAAAAFAPj/AwACAAIAAAAGAPj/AwACAAIAAAAFAP7/AwACAAIAAAAGAP7/AwACAAIAAAAIAP//AwAEAAIAAAAIAP7/AwAEAAIAAAAIAP3/AwAEAAIAAAAIAPz/AwAEAAIAAAAIAPv/AwAEAAIAAAAIAPr/AwAEAAIAAAA=")
+tile_set = ExtResource("1_tot8w")
+
+[node name="shop" parent="." instance=ExtResource("3_karom")]
+position = Vector2(298, 101)
+
+[node name="shopkepper" parent="." instance=ExtResource("5_34syf")]
+position = Vector2(188, 24)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_rbh4j")
+autoplay = true
+
+[connection signal="pressed" from="player/Panel2/VBoxContainer/speed/Speed" to="player" method="_on_speed_pressed"]
+[connection signal="pressed" from="player/Panel2/VBoxContainer/cooldown/cool" to="player" method="_on_cool_pressed"]
+[connection signal="pressed" from="player/Panel2/Button" to="player" method="_on_button_pressed"]
+[connection signal="pressed" from="player/Redeem" to="player" method="_on_redeem_pressed"]
+[connection signal="pressed" from="player/purchase" to="player" method="_on_purchase_pressed"]

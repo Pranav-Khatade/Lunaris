@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://oca6canccqda"]
+
+[ext_resource type="Script" uid="uid://ba2glmkqmh1sq" path="res://Script/tutorial.gd" id="1_nvmt1"]
+[ext_resource type="Texture2D" uid="uid://lgudck01ohe5" path="res://sprite-sheet/tut.png" id="1_p31a4"]
+[ext_resource type="FontFile" uid="uid://co3sm2ycf838u" path="res://font/SignikaNegative-SemiBold.ttf" id="2_8jxoh"]
+
+[sub_resource type="Gradient" id="Gradient_wn38b"]
+colors = PackedColorArray(0, 0.18249, 0.327301, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p31a4"]
+gradient = SubResource("Gradient_wn38b")
+fill = 1
+fill_from = Vector2(0.545455, 0.484848)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jxoh"]
+texture = SubResource("GradientTexture2D_p31a4")
+
+[node name="tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nvmt1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1203.0
+offset_bottom = 691.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8jxoh")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -339.5
+offset_top = -342.5
+offset_right = 339.5
+offset_bottom = 354.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p31a4")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+offset_left = 31.0
+offset_top = 24.0
+offset_right = 218.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("2_8jxoh")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

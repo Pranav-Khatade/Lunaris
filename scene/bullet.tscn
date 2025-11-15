@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://fuy412t28jyp"]
+
+[ext_resource type="Texture2D" uid="uid://bwtqe0oej7nl0" path="res://sprite-sheet/bullet-1.png" id="1_qwydi"]
+[ext_resource type="Script" uid="uid://c0j0hwba76sxf" path="res://Script/Bullet.gd" id="1_xw300"]
+
+[sub_resource type="Gradient" id="Gradient_xw300"]
+colors = PackedColorArray(1, 0.0941176, 0.0705882, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m2l4i"]
+gradient = SubResource("Gradient_xw300")
+fill = 1
+fill_from = Vector2(0.530488, 0.5)
+fill_to = Vector2(0.963415, 0.0304878)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xw300"]
+radius = 5.09902
+
+[node name="Bullet" type="Area2D"]
+z_index = 100
+z_as_relative = false
+script = ExtResource("1_xw300")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qwydi")
+region_enabled = true
+region_rect = Rect2(14.6969, 16.312, 17.1683, 14.7157)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(0, -1.78814e-07)
+scale = Vector2(0.337891, 0.34961)
+texture = SubResource("GradientTexture2D_m2l4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xw300")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+z_index = 4
+scale = Vector2(0.6, 0.6)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

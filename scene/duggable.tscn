@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw5d81jqk7e5a"]
+
+[ext_resource type="Texture2D" uid="uid://ceigpo6hsqldp" path="res://sprite-sheet/tileset.png" id="1_eyotr"]
+[ext_resource type="Script" uid="uid://br3necfgyrchh" path="res://Script/duggable.gd" id="1_hk52s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hk52s"]
+radius = 22.0227
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r8i0"]
+atlas = ExtResource("1_eyotr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02yyq"]
+atlas = ExtResource("1_eyotr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ge88w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r8i0")
+}],
+"loop": false,
+"name": &"Normal",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02yyq")
+}],
+"loop": false,
+"name": &"ORE_1",
+"speed": 1.0
+}]
+
+[node name="Duggable" type="Area2D"]
+visibility_layer = 3
+z_index = 2
+script = ExtResource("1_hk52s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hk52s")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ge88w")
+animation = &"ORE_1"
+
+[node name="CooldownTimmer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

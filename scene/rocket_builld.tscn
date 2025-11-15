@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct6s5sd7iv0ij"]
+
+[ext_resource type="Script" uid="uid://jaikdytemq6m" path="res://Script/rocket_builld.gd" id="1_you1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tiit"]
+size = Vector2(58.1921, 20)
+
+[node name="rocket_builld" type="Area2D"]
+script = ExtResource("1_you1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, 2.38419e-07)
+rotation = -0.640566
+shape = SubResource("RectangleShape2D_4tiit")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

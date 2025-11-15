@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://8jawraxfihdi"]
+
+[ext_resource type="Texture2D" uid="uid://b0yiv75i43f3s" path="res://sprite-sheet/shopkepper.png" id="1_rdwav"]
+[ext_resource type="Script" uid="uid://cu60ufi2lcwsk" path="res://Script/shopkepper.gd" id="2_rc3yo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdwav"]
+size = Vector2(134, 46.3398)
+
+[node name="shopkepper" type="Sprite2D"]
+texture = ExtResource("1_rdwav")
+script = ExtResource("2_rc3yo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12.1633, 18.6387)
+rotation = -0.487011
+shape = SubResource("RectangleShape2D_rdwav")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
